@@ -11,6 +11,7 @@ export class ProductListComponent implements OnInit {
   imageWidth : number = 50;
   imageMargin : number = 2;
   showImage : boolean =false;
+  ratingClicked : string;
 
   _listFilter:string;
   get listFilter(): string{
@@ -86,6 +87,11 @@ set listFilter(value:string){
   constructor() {
       this.filteredProducts=this.products;
       this.listFilter= 'cart';
+   }
+
+   onRatingClicked(message: string): void {
+    this.ratingClicked = this.ratingClicked!=null ? message: '';
+
    }
 
   ngOnInit() {

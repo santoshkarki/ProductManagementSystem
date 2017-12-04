@@ -17,6 +17,7 @@
                     <h3>Filtered by:{{listFilter}} </h3>
                 </div>
             </div>
+    <div>{{ratingClicked}}</div>
 
   <div class='table-responsive'>
       <table class='table' *ngIf='products && products.length'>
@@ -50,7 +51,10 @@
                     <td>{{product.releaseDate}}</td>
                     <td>{{product.description}}</td>
                     <td>{{product.price | currency:'USD': true: '1.2-2'}}</td>
-                    <td>{{product.starRating}}</td>
+                    <td>
+                        <pm-star [rating]='product.starRating'
+                                (ratingClicked)='onRatingClicked($event)'></pm-star>
+                    </td>
                 </tr>
           </tbody>
         </table>
