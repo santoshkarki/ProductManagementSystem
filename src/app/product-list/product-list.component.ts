@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
   imageMargin : number = 2;
   showImage : boolean =false;
   ratingClicked : string;
+  errorMessage: string;
 
   _listFilter:string;
   get listFilter(): string{
@@ -42,9 +43,14 @@ set listFilter(value:string){
 
    }
 
-  ngOnInit() {
-      this.products = this.productService.getProducts();
-      this.filteredProducts=this.products;
+  ngOnInit(): void {
+       this.productService.getProducts()
+                 .subscribe(products => { 
+                              this.products = products;
+                              this.filteredProducts=this.products
+                              },
+                            error => this.errorMessage=<any>error);
+     
   }
 
   toggleImage():void{
