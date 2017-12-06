@@ -5,13 +5,13 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map'
 
 
 
 @Injectable()
 export class ProductService{
     private productUrl = './api/products/products.json';
-
     constructor(private http: HttpClient){}
 
     getProducts():Observable<IProduct[]>{
@@ -19,11 +19,10 @@ export class ProductService{
                     .do(data=>console.log('ALL:'+JSON.stringify(data)))
                     .catch(this.handleError);
     }
-  
+    
     private handleError(err:HttpErrorResponse){
-         console.log(err.message);
-         return Observable.throw(err.message);
-    }
-
+        console.log(err.message);
+        return Observable.throw(err.message);
+   }
 
     }

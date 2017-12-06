@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProductDetailComponent } from './product-list/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
 import {RouterModule}  from '@angular/router'
+import { appRouterModule } from './app.routes';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +26,7 @@ import {RouterModule}  from '@angular/router'
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'products', component: ProductListComponent},
-      {path: 'products/:id', component: ProductDetailComponent},
-      {path: 'welcome', component: WelcomeComponent},
-      {path: '', redirectTo: 'welcome', pathMatch: 'full'},
-      {path: '**', redirectTo: 'welcome', pathMatch: 'full'},
-    ])
+    appRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
