@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './product-list/product-detail.component'
 import { WelcomeComponent } from './home/welcome.component';
 import {RouterModule}  from '@angular/router'
 import { appRouterModule } from './app.routes';
+import { ProductListGuardService } from './product-list/product-list-guard.service';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { appRouterModule } from './app.routes';
     HttpClientModule,
     appRouterModule
   ],
-  providers: [],
+  providers: [ProductListGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
